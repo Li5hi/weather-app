@@ -1,0 +1,90 @@
+body {
+  color: #5b6275;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #f96d90;
+}
+
+.container {
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.card {
+  padding: 50px;
+  border-radius: 50px;
+  border: 0;
+  background-image: linear-gradient(
+    to top,
+    #f3e7e9 0%,
+    #e3eeff 99%,
+    #e3eeff 100%
+  );
+  box-shadow: 4px 4px 10px 1px rgb(0 0 0 / 15%);
+}
+
+.form-group {
+  margin-left: 0 !important;
+  padding-bottom: 30px;
+}
+
+.form-inline .form-group {
+  display: inline-block;
+}
+
+.form-control {
+  border: 0;
+  border-radius: 5px;
+  min-width: 300px;
+}
+
+.btn {
+  border: 0;
+  margin-top: 3px;
+}
+
+.temp-current p,
+.temp-future p {
+  color: #ff3366;
+}
+
+.temp-current p {
+  font-size: 150px;
+}
+
+.temp-future p {
+  font-size: 40px;
+}
+
+.temp-current sup,
+.temp-future sup {
+  position: relative;
+}
+
+.temp-current sup {
+  font-size: 40px;
+  top: -80px;
+}
+
+.temp-future sup {
+  font-size: 15px;
+  top: -20px;
+}
+
+.btn-success,
+.btn-success:visited,
+.btn-success:focus {
+  background-color: #ff3366;
+}
+
+.btn-success:hover {
+  background-color: #d6224f;
+}
