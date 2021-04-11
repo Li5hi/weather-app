@@ -13,6 +13,10 @@ a {
   color: #f96d90;
 }
 
+a:hover {
+  color: #d6224f;
+}
+
 .container {
   margin: 20px auto;
   max-width: 1000px;
@@ -87,4 +91,8 @@ a {
 
 .btn-success:hover {
   background-color: #d6224f;
+}
+
+.open-source-link {
+  padding: 20px 0 0 40px;
 }
