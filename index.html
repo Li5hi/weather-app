@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <form id="search-form" class="form-inline">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input id="city" type="text" class="form-control shadow-sm" placeholder="Enter your city">
-                    </div>
-                    <button type="submit" class="btn btn-secondary mb-2 shadow-sm">Search</button>
-                    <button class="btn btn-success mb-2 shadow-sm" id="current-location">Current</button>
-                </form>
-                <h1></h1>
-                <p><span id="date"><strong>Fri</strong> 11:45</span> | <span id="weather"></span></p>
-                <div class="temp-current">
-                    <p><span id="temperature"></span><sup>°C</sup> ☁️</p>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <p><strong>Sat</strong> | sunny</p>
-                        <div class="temp-future">
-                           <p>8<sup>°C</sup> 🌞</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Sun</strong> | sunny</p>
-                        <div class="temp-future">
-                           <p>9<sup>°C</sup> 🌞</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Mon</strong> | mixed</p>
-                        <div class="temp-future">
-                           <p>8<sup>°C</sup> ⛅️</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Tue</strong> | mixed</p>
-                        <div class="temp-future">
-                           <p>9<sup>°C</sup> ⛅️</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Wed</strong> | stormy</p>
-                        <div class="temp-future">
-                           <p>12<sup>°C</sup> ⛈</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="card">
+        <div class="card-body">
+          <form id="search-form" class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <input
+                id="city"
+                type="text"
+                class="form-control shadow-sm"
+                placeholder="Enter your city"
+              />
             </div>
+            <button type="submit" class="btn btn-secondary mb-2 shadow-sm">
+              Search
+            </button>
+            <button
+              class="btn btn-success mb-2 shadow-sm"
+              id="current-location"
+            >
+              Current
+            </button>
+          </form>
+          <h1></h1>
+          <p>
+            <span id="date"><strong>Fri</strong> 11:45</span> |
+            <span id="weather"></span>
+          </p>
+          <div class="temp-current">
+            <p><span id="temperature"></span><sup>°C</sup> ☁️</p>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <p><strong>Sat</strong> | sunny</p>
+              <div class="temp-future">
+                <p>8<sup>°C</sup> 🌞</p>
+              </div>
+            </div>
+            <div class="col-2">
+              <p><strong>Sun</strong> | sunny</p>
+              <div class="temp-future">
+                <p>9<sup>°C</sup> 🌞</p>
+              </div>
+            </div>
+            <div class="col-2">
+              <p><strong>Mon</strong> | mixed</p>
+              <div class="temp-future">
+                <p>8<sup>°C</sup> ⛅️</p>
+              </div>
+            </div>
+            <div class="col-2">
+              <p><strong>Tue</strong> | mixed</p>
+              <div class="temp-future">
+                <p>9<sup>°C</sup> ⛅️</p>
+              </div>
+            </div>
+            <div class="col-2">
+              <p><strong>Wed</strong> | stormy</p>
+              <div class="temp-future">
+                <p>12<sup>°C</sup> ⛈</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div>
+        <p>
+          <a href="https://github.com/Li5hi/weather-app" target="_blank"
+            >Open-source code</a
+          >
+          by Carolin Weinreuter
+        </p>
+      </div>
     </div>
-</body>
+  </body>
 
-<script src="src/index.js"></script>
-
+  <script src="src/index.js"></script>
 </html>
