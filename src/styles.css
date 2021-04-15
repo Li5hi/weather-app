@@ -78,6 +78,15 @@ a:hover {
   top: -80px;
 }
 
+.temp-current p {
+  display: inline;
+}
+
+.temp-current img {
+  position: relative;
+  top: -50px;
+}
+
 .temp-future sup {
   font-size: 15px;
   top: -20px;
