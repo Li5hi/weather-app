@@ -8,8 +8,10 @@ let date = document.querySelector("#date");
 date.innerHTML = `<strong>${day}</strong> ${hours}:${minutes}`;
 
 function getWeather(response) {
+    celciusTemperature = response.data.main.temp;
+    
     document.querySelector("h1").innerHTML = response.data.name;
-    document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
+    document.querySelector("#temperature").innerHTML = Math.round(celciusTemperature);
     document.querySelector("#weather").innerHTML = response.data.weather[0].main;
     document.querySelector("#icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     document.querySelector("#icon").setAttribute("alt", response.data.weather[0].description);
@@ -43,11 +45,35 @@ function getCurrentPosition(event) {
     navigator.geolocation.getCurrentPosition(showLocation);
 }
 
+function showCelsius(event) {
+    event.preventDefault();
+    let temperature = document.querySelector("#temperature");
+    tempFahrenheit.classList.remove("active");
+    tempCelsius.classList.add("active");
+    temperature.innerHTML = Math.round(celciusTemperature);
+}
+
+function showFahrenheit(event) {
+    event.preventDefault();
+    let temperature = document.querySelector("#temperature");
+    tempCelsius.classList.remove("active");
+    tempFahrenheit.classList.add("active");
+    temperature.innerHTML = Math.round(celciusTemperature * 9) / 5 + 32;
+}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 let button = document.querySelector("#current-location");
-button.addEventListener("click", getCurrentPosition); 
+button.addEventListener("click", getCurrentPosition);
+
+let tempCelsius = document.querySelector("#tempCelsius");
+let tempFahrenheit = document.querySelector("#tempFahrenheit");
+
+tempCelsius.addEventListener("click", showCelsius);
+tempFahrenheit.addEventListener("click", showFahrenheit);
+
+let celciusTemperature = null;
 
 searchCity("Heilbronn");
 

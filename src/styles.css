@@ -87,6 +87,11 @@ a:hover {
   top: -50px;
 }
 
+.temp-current .active {
+  color: #ff3366;
+  cursor: default;
+}
+
 .temp-future sup {
   font-size: 15px;
   top: -20px;
