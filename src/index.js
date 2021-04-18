@@ -58,7 +58,7 @@ function showFahrenheit(event) {
     let temperature = document.querySelector("#temperature");
     tempCelsius.classList.remove("active");
     tempFahrenheit.classList.add("active");
-    temperature.innerHTML = Math.round(celciusTemperature * 9) / 5 + 32;
+    temperature.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
 }
 
 let searchForm = document.querySelector("#search-form");
