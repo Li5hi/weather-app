@@ -61,6 +61,27 @@ function showFahrenheit(event) {
     temperature.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
 }
 
+function showForecast() {
+    let forecastElement = document.querySelector("#forecast");
+
+    let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+    forecastHTML = `<div class="row">`;
+    days.forEach(function (day) {
+        forecastHTML = forecastHTML + `
+            <div class="col-2">
+              <p><strong>${day}</strong> | sunny</p>
+              <div class="temp-future">
+                <p>8<sup>°C</sup> 🌞</p>
+              </div>
+            </div>
+            `;
+    });
+
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
@@ -75,6 +96,7 @@ tempFahrenheit.addEventListener("click", showFahrenheit);
 
 let celciusTemperature = null;
 
+showForecast();
 searchCity("Heilbronn");
 
 
