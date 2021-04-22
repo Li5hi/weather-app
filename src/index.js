@@ -7,6 +7,34 @@ let day = weekDays[now.getDay()];
 let date = document.querySelector("#date");
 date.innerHTML = `<strong>${day}</strong> ${hours}:${minutes}`;
 
+function showForecast() {
+    let forecastElement = document.querySelector("#forecast");
+
+    let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+    forecastHTML = `<div class="row">`;
+    days.forEach(function (day) {
+        forecastHTML = forecastHTML + `
+            <div class="col-2">
+              <p><strong>${day}</strong> | sunny</p>
+              <div class="temp-future">
+                <p>8<sup>°C</sup> 🌞</p>
+              </div>
+            </div>
+            `;
+    });
+
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+    console.log(coordinates);
+    let apiKey = `aa80dfc499c569af8a15e578c09bbf2b`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+    axios.get(apiUrl).then(showForecast);
+}
+
 function getWeather(response) {
     celciusTemperature = response.data.main.temp;
     
@@ -17,6 +45,8 @@ function getWeather(response) {
     document.querySelector("#icon").setAttribute("alt", response.data.weather[0].description);
     document.querySelector("#humidity").innerHTML = response.data.main.humidity;
     document.querySelector("#wind").innerHTML = response.data.wind.speed;
+
+    getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -59,27 +89,6 @@ function showFahrenheit(event) {
     tempCelsius.classList.remove("active");
     tempFahrenheit.classList.add("active");
     temperature.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
-}
-
-function showForecast() {
-    let forecastElement = document.querySelector("#forecast");
-
-    let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-
-    forecastHTML = `<div class="row">`;
-    days.forEach(function (day) {
-        forecastHTML = forecastHTML + `
-            <div class="col-2">
-              <p><strong>${day}</strong> | sunny</p>
-              <div class="temp-future">
-                <p>8<sup>°C</sup> 🌞</p>
-              </div>
-            </div>
-            `;
-    });
-
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
 }
 
 let searchForm = document.querySelector("#search-form");
