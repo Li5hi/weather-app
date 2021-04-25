@@ -17,7 +17,6 @@ function formatForecastDay(timestamp) {
 
 function showForecast(response) {
     let forecastElement = document.querySelector("#forecast");
-    console.log(response);
 
     let forecast = response.data.daily;
 
@@ -28,7 +27,7 @@ function showForecast(response) {
             <div class="col-2">
               <p><strong>${formatForecastDay(forecastDay.dt)}</strong> | ${forecastDay.weather[0].main}</p>
               <div class="temp-future">
-                <p>${Math.round(forecastDay.temp.max)}<sup>°C</sup></p><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png">
+                <p>${Math.round(forecastDay.temp.max)}<sup> °C</sup></p><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png">
               </div>
             </div>
             `;
@@ -85,35 +84,11 @@ function getCurrentPosition(event) {
     navigator.geolocation.getCurrentPosition(showLocation);
 }
 
-function showCelsius(event) {
-    event.preventDefault();
-    let temperature = document.querySelector("#temperature");
-    tempFahrenheit.classList.remove("active");
-    tempCelsius.classList.add("active");
-    temperature.innerHTML = Math.round(celciusTemperature);
-}
-
-function showFahrenheit(event) {
-    event.preventDefault();
-    let temperature = document.querySelector("#temperature");
-    tempCelsius.classList.remove("active");
-    tempFahrenheit.classList.add("active");
-    temperature.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
-}
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentPosition);
-
-let tempCelsius = document.querySelector("#tempCelsius");
-let tempFahrenheit = document.querySelector("#tempFahrenheit");
-
-tempCelsius.addEventListener("click", showCelsius);
-tempFahrenheit.addEventListener("click", showFahrenheit);
-
-let celciusTemperature = null;
 
 searchCity("Heilbronn");
 
