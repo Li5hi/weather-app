@@ -92,6 +92,10 @@ a:hover {
   cursor: default;
 }
 
+#forecast {
+  text-align: center;
+}
+
 .temp-future sup {
   font-size: 15px;
   top: -20px;
