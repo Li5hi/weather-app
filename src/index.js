@@ -7,21 +7,32 @@ let day = weekDays[now.getDay()];
 let date = document.querySelector("#date");
 date.innerHTML = `<strong>${day}</strong> ${hours}:${minutes}`;
 
-function showForecast() {
+function formatForecastDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return days[day];
+}
+
+function showForecast(response) {
     let forecastElement = document.querySelector("#forecast");
+    console.log(response);
 
-    let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+    let forecast = response.data.daily;
 
-    forecastHTML = `<div class="row">`;
-    days.forEach(function (day) {
-        forecastHTML = forecastHTML + `
+    let forecastHTML = `<div class="row">`;
+    forecast.forEach(function (forecastDay, index) {
+        if (index < 6) {
+            forecastHTML = forecastHTML + `
             <div class="col-2">
-              <p><strong>${day}</strong> | sunny</p>
+              <p><strong>${formatForecastDay(forecastDay.dt)}</strong> | ${forecastDay.weather[0].main}</p>
               <div class="temp-future">
-                <p>8<sup>°C</sup> 🌞</p>
+                <p>${Math.round(forecastDay.temp.max)}<sup>°C</sup></p><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png">
               </div>
             </div>
             `;
+        } 
     });
 
     forecastHTML = forecastHTML + `</div>`;
@@ -29,9 +40,8 @@ function showForecast() {
 }
 
 function getForecast(coordinates) {
-    console.log(coordinates);
     let apiKey = `aa80dfc499c569af8a15e578c09bbf2b`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showForecast);
 }
 
@@ -105,7 +115,6 @@ tempFahrenheit.addEventListener("click", showFahrenheit);
 
 let celciusTemperature = null;
 
-showForecast();
 searchCity("Heilbronn");
 
 
